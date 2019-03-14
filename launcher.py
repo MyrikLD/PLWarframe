@@ -106,7 +106,6 @@ class Handler:
 
         builder.get_object('language').set_active_id(conf['language'])
 
-        builder.get_object('win_exe').set_filename(conf['WIN_EXE'])
         builder.get_object('wine_path').set_filename(conf['WINE_PATH'])
         builder.get_object('wine_exe').set_filename(conf['WINE_EXE'])
         builder.get_object('log').set_text(conf['log'])
@@ -125,7 +124,6 @@ class Handler:
 
             'language': builder.get_object('language').get_active_id(),
 
-            'WIN_EXE': builder.get_object('win_exe').get_filename(),
             'WINE_PATH': builder.get_object('wine_path').get_filename(),
             'WINE_EXE': builder.get_object('wine_exe').get_filename(),
             'log': builder.get_object('log').get_text(),
@@ -145,9 +143,10 @@ class Handler:
     def runClicked(self, button):
         if self.ready:
             self.status_label('Start game...')
-            self.log.info(f"CMD: {self.cmd[2]}")
+            self.log.info(f'CMD: {self.cmd[2]}')
             self.process = Subproc(self.cmd[2], 'run')
             self.process.run()
+            self.onQuit()
         elif self.thread and self.thread.is_alive():
             self.play_button('Download', False)
 

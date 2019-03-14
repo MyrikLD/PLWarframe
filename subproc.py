@@ -5,6 +5,8 @@ import os
 import signal
 from threading import Event
 
+from config import local_path
+
 
 class Proc:
     # WORK
@@ -14,7 +16,7 @@ class Proc:
 
     # CONF
     WINE_PATH = ''
-    WIN_EXE = ''
+    WIN_EXE = local_path + '/Warframe.x64.exe'
     WINE_EXE = ''
 
     log = ''
