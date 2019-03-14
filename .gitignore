@@ -1,0 +1,6 @@
+*.glade~
+config.json
+__pycache__/
+Downloaded/
+local_index.txt
+.idea
